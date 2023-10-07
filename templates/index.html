@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Portal</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="organization-banner">
+        <!-- <img src="your_organization_logo.png" alt="Organization Logo"> -->
+        <h1>Grub Dash</h1>
+    </div>
+    <div class="tabs">
+        <button class="tab-button" id="tab1Button" onclick="showTab('tab1')">ALL</button>
+        <button class="tab-button" id="tab2Button" onclick="showTab('tab2')">Pre-Approved</button>
+        <button class="tab-button" id="tab3Button" onclick="showTab('tab3')">Offer Accepted</button>
+        <button class="tab-button" id="tab4Button" onclick="showTab('tab4')">Capital on its Way</button>
+        <button class="tab-button" id="tab5Button" onclick="showTab('tab5')">No Offers</button>
+        <table style="white-space:nowrap;width:100%;">
+            <thead>
+                <tr>
+                    <th class="block" style="width:auto">ID</th>
+                    <th class="block" style="width:auto">Name</th>
+                    <th class="block" style="width:auto">Status</th>
+                    <th class="block" style="width:auto">Fund Amount</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div class="tab-content" id="tab1">
+        <!-- Display transactions based on the conditional logic for Tab 1 -->
+        <table style="white-space:nowrap;width:100%;">
+            <tbody>
+                {% for transaction in transactions %}
+                    {% if transaction['status'] in ['No Offers', 'Pre-Approved','Offer Accepted','Capital on its Way'] %}
+                        <tr>
+                            <td class="block" style="width:auto">{{ transaction['id'] }}</td>
+                            <td class="block" style="width:auto">{{ transaction['name'] }}</td>
+                            <td class="block" style="width:auto">{{ transaction['status'] }}</td>
+                            <td class="block" style="width:auto">{{ transaction['amount'] }}</td>
+                            <!-- Add more property columns as needed -->
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="tab-content" id="tab2">
+        <!-- Display transactions based on the conditional logic for Tab 1 -->
+        <table style="white-space:nowrap;width:100%;">
+            <tbody>
+                {% for transaction in transactions %}
+                    {% if transaction['status'] == 'Pre-Approved' %}
+                        <tr>
+                            <td class="block" style="width:auto">{{ transaction['id'] }}</td>
+                            <td class="block" style="width:auto">{{ transaction['name'] }}</td>
+                            <td class="block" style="width:auto">{{ transaction['status'] }}</td>
+                            <td class="block" style="width:auto">{{ transaction['amount'] }}</td>
+                            <!-- Add more property columns as needed -->
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="tab-content" id="tab3">
+        <!-- Display transactions based on the conditional logic for Tab 2 -->
+        <table style="white-space:nowrap;width:100%;">
+            <tbody>
+                {% for transaction in transactions %}
+                    {% if transaction['status'] == 'Offer Accepted' %}
+                        <tr>
+                            <td class="block" style="width:auto">{{ transaction['id'] }}</td>
+                            <td class="block" style="width:auto">{{ transaction['name'] }}</td>
+                            <td class="block" style="width:auto">{{ transaction['status'] }}</td>
+                            <td class="block" style="width:auto">{{ transaction['amount'] }}</td>
+                            <!-- Add more property columns as needed -->
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="tab-content" id="tab4">
+        <!-- Display transactions based on the conditional logic for Tab 2 -->
+        <table style="white-space:nowrap;width:100%;">
+            <tbody>
+                {% for transaction in transactions %}
+                    {% if transaction['status'] == 'Capital on its Way' %}
+                        <tr>
+                            <td class="block" style="width:auto">{{ transaction['id'] }}</td>
+                            <td class="block" style="width:auto">{{ transaction['name'] }}</td>
+                            <td class="block" style="width:auto">{{ transaction['status'] }}</td>
+                            <td class="block" style="width:auto">{{ transaction['amount'] }}</td>
+                            <!-- Add more property columns as needed -->
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="tab-content" id="tab5">
+        <!-- Display transactions based on the conditional logic for Tab 2 -->
+        <table style="white-space:nowrap;width:100%;">
+            <tbody>
+                {% for transaction in transactions %}
+                    {% if transaction['status'] == 'No Offers' %}
+                        <tr>
+                            <td class="block" style="width:auto">{{ transaction['id'] }}</td>
+                            <td class="block" style="width:auto">{{ transaction['name'] }}</td>
+                            <td class="block" style="width:auto">{{ transaction['status'] }}</td>
+                            <td class="block" style="width:auto">{{ transaction['amount'] }}</td>
+                            <!-- Add more property columns as needed -->
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- Add more divs for additional tab contents -->
+
+    <script src="static/script.js"></script>
+</body>
+</html>
